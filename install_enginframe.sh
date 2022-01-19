@@ -1,6 +1,3 @@
-adduser efadmin
-adduser efnobody
-
 passwd efadmin
 
 efdownload=`curl --silent --output - https://download.enginframe.com/ | grep href | grep enginframe/packages | grep jar |  sed -e 's/.*http/http/' -e 's/jar.*/jar/'`

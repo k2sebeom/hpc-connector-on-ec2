@@ -14,6 +14,9 @@ echo "==================="
 
 sleep 10
 
+adduser efadmin
+adduser efnobody
+
 cp /var/lib/dcvsmbroker/security/dcvsmbroker_ca.pem /home/efadmin/.
 
 java_path=$(readlink /etc/alternatives/java | sed 's/\/bin\/java//')
