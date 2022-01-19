@@ -630,7 +630,7 @@ ef.delegate.dcvsm = true
 ######################################################################
 
 # OAuth2 Server URL
-dcvsm.oauth2.url = https\://($hostname)\:sm-port/oauth2/token
+dcvsm.oauth2.url = https\://$(hostname)\:8443/oauth2/token
 
 # OAuth2 Client ID
 dcvsm.oauth2.id = 
@@ -639,7 +639,7 @@ dcvsm.oauth2.id =
 #dcvsm.oauth2.psw = XXXXXXXX
 
 # DCV Session Manager Broker URI
-dcvsm.broker.url = https\://$(hostname)\:sm-port
+dcvsm.broker.url = https\://$(hostname)\:8443
 
 
 ######################################################################
@@ -662,3 +662,7 @@ intro-targets = component_enginframe,component_kernel,component_applets,componen
 
 progress-targets = cleanuptarget,
 EOF
+
+echo "==================="
+echo "Created efinstall.config"
+echo "==================="
