@@ -1,5 +1,10 @@
 java_path=$(readlink /etc/alternatives/java | sed 's/\/bin\/java//')
 
+dcv-session-manager-broker register-api-client --client-name EnginFrame > ef_client_reg
+client_id=$(cat /tmp/packages/ef_client_reg | sed -n 's/^[ \t]*client-id:[ \t]*//p')
+client_pw=$(cat /tmp/packages/ef_client_reg | sed -n 's/^[ \t]*client-password:[ \t]*//p')
+rm ef_client_reg
+
 cat > efinstall.config << EOF
 ######################################################################
 # EnginFrame
@@ -633,10 +638,10 @@ ef.delegate.dcvsm = true
 dcvsm.oauth2.url = https\://$(hostname)\:8443/oauth2/token
 
 # OAuth2 Client ID
-dcvsm.oauth2.id = 
+dcvsm.oauth2.id = $client_id
 
 # Property hidden PasswordTextInput
-#dcvsm.oauth2.psw = XXXXXXXX
+dcvsm.oauth2.psw = $client_pw
 
 # DCV Session Manager Broker URI
 dcvsm.broker.url = https\://$(hostname)\:8443
