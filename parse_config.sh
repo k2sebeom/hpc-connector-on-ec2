@@ -1,3 +1,4 @@
+aws_region=$(curl --silent http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/[a-z]$//')
 java_path=$(readlink /etc/alternatives/java | sed 's/\/bin\/java//')
 
 dcv-session-manager-broker register-api-client --client-name EnginFrame > ef_client_reg
@@ -601,10 +602,10 @@ ef.jobmanager = hpc
 ######################################################################
 
 # AWS profile name
-hpc.aws.profile.name = 
+hpc.aws.profile.name = default
 
 # AWS region
-hpc.aws.region = 
+hpc.aws.region = $aws_region
 
 # AWS bucket ARN
 hpc.aws.bucket.arn = 
