@@ -1,5 +1,9 @@
 aws_region=$(curl --silent http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/[a-z]$//')
-java_path=$(readlink /etc/alternatives/java | sed 's/\/bin\/java//')
+
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.rpm
+yum install -y jdk-8u141-linux-x64.rpm
+
+java_path=(/usr/java/jdk*/jre)
 
 dcv-session-manager-broker register-api-client --client-name EnginFrame > ef_client_reg
 client_id=$(cat ef_client_reg | sed -n 's/^[ \t]*client-id:[ \t]*//p')
