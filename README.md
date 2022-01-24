@@ -47,6 +47,25 @@ Move to the cloned repository.
 $ cd hpc-connector-on-ec2
 ```
 
+### Provision AWS Resources
+To use HPC Connector on EnginFrame Portal, we need to provision some necessary AWS resources. Conveniently, AWS provides automated process of provisioning resources using CloudFormation. Go to [EnginFrame Document](https://docs.aws.amazon.com/enginframe/latest/ag/managing-hpc-connector.html#before-installing-enginframe) and click on the link of a correct region. The link will bring you to CloudFormation console. Create stack by clicking "Create Stack."
+
+![Create Stack](/src/pic13.png)
+
+Once stack is created, you can see the created stack on [CloudFormation console](https://console.aws.amazon.com/cloudformation)
+
+On the "Outputs" tab of the stack details, you can find the required arns for the resources. You will be addrerssed to type in these values later during the installation.
+
+![ARN](/src/pic14.png)
+
+On the "Resources" tab, you can find a resource with a Logical ID "EFUser." Click the link on the Physical ID, then it will take you to IAM console.
+
+![Rsrc](/src/pic15.png)
+
+Under "Security credentials," click "Create access key." You should copy access key id and secret access key since you can only see them when you create them. You will be addrerssed to type in these values later during the installation.
+
+![IAM](/src/pic16.png)
+
 ### Install Enginframe
 
 All the scripts required to install enginframe are in the repository. You can either run scripts one by one as presented in this guide, or you can run master.sh which will execute each script in a proper order.
@@ -68,15 +87,23 @@ After the script is complete check that the broker is running and active by runn
 $ systemctl status dcv-session-manager-broker
 ```
 
-2. parse_config.sh
+2. install_pcluster.sh
+
+Run the install script for pcluster.
+```
+$ ./install_pcluster.sh
+```
+You will be addressed to type in values of the AWS credentials created above.
+
+3. parse_config.sh
 
 Run the script to make config file for enginframe installation.
 ```
 $ ./parse_config.sh
 ```
-After the script is complete, you will see a file efinstall.config created.
+You will be addressed to type in arns of the AWS resources created above. After the script is complete, you will see a file efinstall.config created.
 
-3. ./install_enginframe.sh
+4. ./install_enginframe.sh
 
 Run the install script for NICE Enginframe.
 ```
