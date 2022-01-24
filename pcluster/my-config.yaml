@@ -1,0 +1,39 @@
+Region: ap-northeast-2
+Image:
+  Os: alinux2
+SharedStorage:
+  - Name: myebs
+    StorageType: Ebs
+    MountDir: /shared
+    EbsSettings:
+      VolumeType: gp2
+      Size: 20
+HeadNode:
+  InstanceType: c5.xlarge
+  Networking:
+    SubnetId: subnet-c013fb8f
+  Ssh:
+    KeyName: test-aws-dev.pem
+  Iam:
+    S3Access:
+      - EnableWriteAccess: true
+        BucketName: '*'
+Scheduling:
+  Scheduler: slurm
+  SlurmQueues:
+    - Name: compute
+      ComputeResources:
+        - Name: compute-1
+          InstanceType: c5.large
+          MinCount: 0
+          MaxCount: 8
+          DisableSimultaneousMultithreading: true
+      Iam:
+        S3Access:
+          - EnableWriteAccess: true
+            BucketName: '*'
+      Networking:
+        SubnetIds:
+          - subnet-c013fb8f
+        PlacementGroup:
+          Enabled: true
