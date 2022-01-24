@@ -13,7 +13,7 @@ HeadNode:
   Networking:
     SubnetId: subnet-c013fb8f
   Ssh:
-    KeyName: test-aws-dev.pem
+    KeyName: enginframe-key
   Iam:
     S3Access:
       - EnableWriteAccess: true

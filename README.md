@@ -135,3 +135,25 @@ If you click on "Workspace", you will be addressed to log in. You can use userna
 Once you are logged in, you can use the enginframe portal.
 
 ![Portal](src/pic12.png)
+
+### Using HPC Connector
+
+Usage of HPC Connector is also addressed on this [AWS Blog](https://aws.amazon.com/ko/blogs/hpc/introducing-aws-hpc-connector/).
+
+On the workspace view, click on "Switch to Admin View."
+
+![Admin](src/pic17.png)
+
+Then, click on "AWS Cluster Configuration."
+
+![AWS](src/pic18.png)
+
+Click on "Register," and you can add the cluster config of your choice. You can refernce the [example file](pcluster/sample-config.yaml) but you need to fix subnet id, region, and key pair name accordingly.
+
+![Create](src/pic19.png)
+
+Once the config file is registered, you can create parallel cluster by "action -> Create Cluster."
+
+![Real](src/pic20.png)
+
+
