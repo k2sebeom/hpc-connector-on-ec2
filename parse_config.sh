@@ -10,6 +10,11 @@ client_id=$(cat ef_client_reg | sed -n 's/^[ \t]*client-id:[ \t]*//p')
 client_pw=$(cat ef_client_reg | sed -n 's/^[ \t]*client-password:[ \t]*//p')
 rm ef_client_reg
 
+read -p "AWS S3 Bucket ARN: " BUCKET_ARN
+read -p "AWS SSM Role ARN: " SSM_ROLE_ARN
+read -p "AWS S3 Role ARN: " S3_ROLE_ARN
+read -p "AWS ParallelClutser Role ARN: " CLUSTER_ROLE_ARN
+
 cat > efinstall.config << EOF
 ######################################################################
 # EnginFrame
@@ -612,16 +617,16 @@ hpc.aws.profile.name = default
 hpc.aws.region = $aws_region
 
 # AWS bucket ARN
-hpc.aws.bucket.arn = 
+hpc.aws.bucket.arn = $BUCKET_ARN
 
 # SSM role ARN
-hpc.ssm.role.arn = 
+hpc.ssm.role.arn = $SSM_ROLE_ARN
 
 # S3 role ARN
-hpc.s3.role.arn = 
+hpc.s3.role.arn = $S3_ROLE_ARN
 
 # ParallelCluster role ARN
-hpc.pcluster.role.arn = 
+hpc.pcluster.role.arn = $CLUSTER_ROLE_ARN
 
 
 ######################################################################
