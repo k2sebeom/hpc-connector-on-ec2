@@ -126,6 +126,8 @@ You can open the installed enginframe portal using your browser at
 
 http://\<public ip address\>:8443
 
+(If you want to connect to the portal through 80 or 443 port, you can follow [these steps](https://support.nice-software.com/support/solutions/articles/1000053839-enginframe-https-with-httpd))
+
 ![Enginframe](src/pic10.png)
 
 If you click on "Workspace", you will be addressed to log in. You can use username of "efadmin" and password you configured during the installation.
